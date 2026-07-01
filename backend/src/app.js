@@ -2,6 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const compression = require("compression");
 const cors = require("cors");
+const { NODE_ENV } = require("./config/env");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
@@ -23,7 +24,7 @@ app.get("/api/v1/health", (req, res) => {
   res.status(200).json({
     success: true,
     message: "Server is running successfully!",
-    environment: process.env.NODE_ENV,
+    environment: NODE_ENV,
     timestamp: new Date().toISOString(),
   });
 });
